@@ -1,0 +1,50 @@
+
+.carta{
+      width: 300px;
+      height: 420px;
+      background-color: #5a85a9;
+      border-style: outset;
+      border-color: #bfbbcb;
+      border-radius: 10px;
+      
+      
+      
+    }
+    .carta:hover{
+      transform: translate(0px, -10px);
+    }
+    
+  
+    
+.carta img{
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+      
+    }
+.carta img:hover{
+      width: 100%;
+      height: 200px;
+      
+      
+    }
+
+.carta h3{
+      color: white;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+
+.carta p{
+      color: white;
+      font-size: 15px;
+      margin: 10px 0;
+    }
+    
+    
+
+
+
+
+ 

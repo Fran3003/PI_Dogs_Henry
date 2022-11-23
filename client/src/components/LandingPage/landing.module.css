@@ -1,0 +1,45 @@
+.inicio{
+    background-image: url(https://images.wallpaperscraft.com/image/single/dog_pet_glance_182671_1280x720.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+  
+}
+
+.inicio button{
+    
+    background-image: url(https://e7.pngegg.com/pngimages/375/739/png-clipart-dog-comelite-cloud-cat-paw-pet-dog-animals-pet-thumbnail.png); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: none;
+    margin: 10px;
+    position: absolute;
+    top: 400px;
+    left: 275px;
+}
+
+.inicio button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: ease 0.5s;
+    
+
+}
+
+.inicio h1{
+   
+    font-size: 70px;
+    position: absolute;
+    top: 30px;
+    left: 280px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}

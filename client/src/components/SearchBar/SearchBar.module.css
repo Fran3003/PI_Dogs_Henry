@@ -1,0 +1,28 @@
+.SearchBar{
+    display: flex;
+    font-size: small;
+    font-family: 'Mukta Malar', sans-serif;
+    font-weight: bold;
+    color: #211E1C;
+    border: 0;
+    border-radius: 10px;
+    
+    width: 100%;
+    height: 29px;
+    
+    
+    
+} 
+
+.SearchBar button{
+    background-image: url(https://st2.depositphotos.com/4060975/8056/v/450/depositphotos_80565476-stock-illustration-magnifier-vector-icon.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    border: none;
+    width: 21px;
+    height: 29px;
+    cursor: pointer;
+}
+
