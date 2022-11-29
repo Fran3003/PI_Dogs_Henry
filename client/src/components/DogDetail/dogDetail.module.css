@@ -56,6 +56,23 @@
     border-color: #bfbbcb;
 }
 
+section button{
+    border-radius: 10px;
+    background-color: #bfbbcb;
+    color: #000000;
+    font-size: 15px;
+    border-style: outset;
+    border-color: #000000;
+    cursor: pointer;
+}
+
+section button:hover{
+    background-color: #000000;
+    color: #bfbbcb;
+    border-style: outset;
+    border-color: #bfbbcb;
+}
+
 
 
  

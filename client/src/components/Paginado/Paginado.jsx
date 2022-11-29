@@ -12,7 +12,7 @@ const Paginado = ({ allDogs, dogsPage, paginado }) => { //recibe todos los perro
         pageNum.push(i) //push agrega un elemento al final del array
 
     }
-
+   
     return (
         <nav>
             <div className={s.PaginationContainer}>

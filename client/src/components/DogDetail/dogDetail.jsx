@@ -44,14 +44,14 @@ const DogDetail = () => {
                             <h1>{dog[0].name.toUpperCase()}</h1>
                             <hr />
                             <br />
-                            <h2>Temperament: {dog[0].temperament ? dog[0].temperament.toLowerCase() : (dog[0].temperaments && dog[0].temperaments.map((t) => " " + t.name.toLowerCase()))}</h2>
+                            <h2>Temperament: {dog[0].temperament ? dog[0].temperament.toLowerCase() : (dog[0].temperaments && dog[0].temperaments.map((t) => " " + t.name.toLowerCase()))}</h2> 
                             <h2>Lower weight: {dog[0].weight_min} kilograms</h2>
                             <h2>Higher weight: {dog[0].weight_max} kilograms</h2>
                             <h2>Lower height: {dog[0].height_min} centimeters</h2>
                             <h2>Higher height: {dog[0].height_max} centimeters</h2>
-                            <h2>Life span: {dog[0].life_span} years</h2>
+                            <h2>Life span: {dog[0].life_span} </h2>
 
-                            {dog[0].id.length === 36 && <button className={s.button} onClick={handleDelete}>DELETE</button>}
+                            {dog[0].id.length === 36 && <button onClick={handleDelete}>DELETE</button>}
                             
                         </div>
                     </section>

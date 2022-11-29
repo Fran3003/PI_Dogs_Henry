@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, FILTER_BY_BREEDS, ORDER_ALPHABETIC, ORDER_WEIGHT, GET_DOGS_BY_NAME, POST_DOG, GET_ALL_TEMPERAMENTS, FILTER_BY_TEMPERAMENTS, GET_DOG_DETAIL, RESET_STATE, DELETE_CREATED_DOG } from "./actions"
+import { GET_ALL_DOGS, FILTER_BY_BREEDS, ORDER_ALPHABETIC, ORDER_WEIGHT, GET_DOGS_BY_NAME, POST_DOG, GET_ALL_TEMPERAMENTS, FILTER_BY_TEMPERAMENTS, GET_DOG_DETAIL, RESET_STATE, DELETE_CREATED_DOG, FILTER_BY_WEIGHT } from "./actions"
 
 const initialState = {
     // estado inicial de la app  
@@ -6,10 +6,6 @@ const initialState = {
     allDogs: [], // todos los perros sin filtrar por temperamento o raza 
     allTemperaments: [], // todos los temperamentos  
     dogDetail: [], // detalle de un perro  
-
-    // typeFilter: "",
-    // breedFilter: [],
-    // temperamentFilter: []
 
 };
 
@@ -142,12 +138,29 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 dogDetail: {}
             }
+            // el case de RESET_STATE sirve para resetear el estado de la pagina de detalle de perro, se retorna un objeto vacio
 
         case DELETE_CREATED_DOG:
             return {
                 ...state,
                 dogs: state.dogs.filter(dog => dog.id !== action.payload)
             }
+
+        case FILTER_BY_WEIGHT:
+           // filtrar por peso menor a 10kg
+            const dogsWeight = action.payload === "10kg" ? // si el payload es "less" se filtran los perros con peso menor a 10kg, si no, se filtran los perros con peso mayor a 10kg
+                state.dogs.filter(dog => dog.weight_min < 10) : // se filtran los perros con peso menor a 10kg
+                action.payload === "all" ? // si el payload es "all" se filtran todos los perros, si no, se filtran los perros con peso mayor a 10kg
+                    state.dogs : // se filtran todos los perros
+                    state.dogs.filter(dog => dog.weight_min > 10) // se filtran los perros con peso mayor a 10kg
+                    
+                
+            return {
+                ...state,
+                dogs: dogsWeight
+            }
+            
+            
 
         default: return state
     }

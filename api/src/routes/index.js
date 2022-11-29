@@ -12,7 +12,8 @@ const router = Router();
 
 router.use('/dogs', dogRoutes);
 router.use('/temperaments', temperamentRoutes);
-router.use('/delete', dogRoutes); // Para el delete
+
+
 
 
 

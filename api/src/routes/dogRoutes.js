@@ -104,16 +104,7 @@ router.put('/:id', async (req, res, next) => {
         const { name, height_min, height_max, weight_min, weight_max, life_span, temperaments, image } = req.body
         const dog = await Dog.findByPk(id)
         if (dog) {
-            await dog.update({
-                name,
-                height_min,
-                height_max,
-                weight_min,
-                weight_max,
-                life_span,
-                temperaments,
-                image
-            })
+            await dog.update({ name, height_min, height_max, weight_min, weight_max, life_span, temperaments, image })
             res.status(200).json({ msg: "Dog updated" })
         } else {
             res.status(404).json({ msg: "Dog not found" })

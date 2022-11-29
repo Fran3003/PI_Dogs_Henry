@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllDogs, filterByBreeds, orderAlphabetic, orderWeight, getAllTemperaments, filterByTemperaments } from "../../redux/actions";
+import { getAllDogs, filterByBreeds, orderAlphabetic, orderWeight, getAllTemperaments, filterByTemperaments, filterByWeight } from "../../redux/actions";
 import Card from "../Card/Card";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
@@ -23,7 +23,7 @@ const Home = () => {
    const [dogsPage] = useState(8) //cantidad de perros por página
 
    const lastDog = currentPage * dogsPage  //8
-   const firstDog = lastDog - dogsPage // 8 - 8 = 0
+   const firstDog = lastDog - dogsPage // 8 - 8 = 0 esto es para que no me muestre los 8 primeros perros
    const currentDogs = allDogs.slice(firstDog, lastDog) //dogs en la página actual
 
 
@@ -67,6 +67,13 @@ const Home = () => {
       setOrder(e.target.value)
       setCurrentPage(1)
    }
+
+   // const handleFilterWeight = (e) => {
+   //    e.preventDefault()
+   //    dispatch(filterByWeight(e.target.value))
+   //    setCurrentPage(1)
+
+   // }
 
    return (
       <>
@@ -116,6 +123,16 @@ const Home = () => {
                         ))}
                   </select>
                </div>
+
+               {/* <div className={s.filterWei}>
+                  <label> WEIGHT </label>
+                  <select onChange={e => handleFilterWeight(e)}>
+                     <option hidden>Filter by weight</option>
+                     <option value="all">All</option>
+                     <option value="10kg">-10kg</option>
+                  </select>
+                  </div> */}
+
             </div>
             <div className={s.btn}><Link to='/dogs' style={{ textDecoration: "none" }}><button>Create dog</button></Link>
                            <br />
@@ -154,10 +171,10 @@ const Home = () => {
             <div />
 
 
-            <Paginado key={paginado}
-               dogsPage={dogsPage}
-               allDogs={allDogs.length}
-               paginado={paginado}
+            <Paginado
+               dogsPage={dogsPage} //cantidad de perros por página
+               allDogs={allDogs.length} //cantidad total de perros
+               paginado={paginado} //función para cambiar de página
             />
          </div></>
 

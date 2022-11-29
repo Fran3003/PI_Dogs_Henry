@@ -12,7 +12,7 @@ export const FILTER_BY_TEMPERAMENTS = "FILTER_BY_TEMPERAMENTS" // se crea una co
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL"
 export const RESET_STATE = "RESET_STATE" // se crea una constante para resetear el estado
 export const DELETE_CREATED_DOG = "DELETE_CREATED_DOG" // se crea una constante para eliminar un perro creado por el usuario
-
+export const FILTER_BY_WEIGHT = "FILTER_BY_WEIGHT" // se crea una constante para filtrar los perros por peso
 
 
 
@@ -30,13 +30,36 @@ export const getAllDogs = () => { // esta función es la que se va a llamar en e
     }
 }
 
-export const getDogsbyName = (name) => { 
+// export const getDogsbyName = (name) => { 
+//     return function (dispatch) {
+//         axios.get(`http://localhost:3001/dogs?name=${name}`)
+//             .then(response => {
+//                 dispatch({
+//                     type: GET_DOGS_BY_NAME,
+//                     payload: response.data
+//                 })
+//             })
+//             .catch(function (error) {
+//                 if (error.response) {
+//                     // Request made and server responded
+//                     alert(error.response.data);
+//                     console.log(error.response.status);
+
+//                 }
+//             })
+
+//     }
+// }
+
+// forma de getDogsbyName con con fetch
+export const getDogsbyName = (name) => {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/dogs?name=${name}`)
-            .then(response => {
+        fetch(`http://localhost:3001/dogs?name=${name}`)
+            .then(response => response.json())
+            .then(data => {
                 dispatch({
                     type: GET_DOGS_BY_NAME,
-                    payload: response.data
+                    payload: data
                 })
             })
             .catch(function (error) {
@@ -44,10 +67,8 @@ export const getDogsbyName = (name) => {
                     // Request made and server responded
                     alert(error.response.data);
                     console.log(error.response.status);
-
                 }
             })
-
     }
 }
 
@@ -162,5 +183,11 @@ export const deleteCreatedDog = (id) => {
     }
 }
 
+export const filterByWeight = (payload) => {
+    return {
+        type: FILTER_BY_WEIGHT,
+        payload
+    }    
+}
 
 
