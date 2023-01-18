@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllDogs, filterByBreeds, orderAlphabetic, orderWeight, getAllTemperaments, filterByTemperaments, filterByWeight } from "../../redux/actions";
+import { getAllDogs, filterByBreeds, orderAlphabetic, orderWeight, getAllTemperaments, filterByTemperaments } from "../../redux/actions";
 import Card from "../Card/Card";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
@@ -20,16 +20,33 @@ const Home = () => {
 
    //paginado
    const [currentPage, setCurrentPage] = useState(1) 
-   const [dogsPage] = useState(8) 
+   const [dogsPerPage] = useState(8) 
 
-   const lastDog = currentPage * dogsPage
-   const firstDog = lastDog - dogsPage 
-   const currentDogs = allDogs.slice(firstDog, lastDog) 
+   const last = currentPage * dogsPerPage
+   const first = last - dogsPerPage 
+   const currentDogs = allDogs.slice(first, last) 
+   const numberOfPages = allDogs.length / dogsPerPage
 
-
-   const paginado = (pageNum) => { 
-      setCurrentPage(pageNum) 
-   }
+   const pagination = (numberPage) => {
+      setCurrentPage(numberPage);
+      document.getElementById(`${currentPage}`).classList.remove('active');
+      document.getElementById(`${numberPage}`).classList.toggle('active');
+    }
+    const handleNext = (event) => {
+      event.preventDefault();
+      currentPage <= numberOfPages ? setCurrentPage(currentPage + 1) : setCurrentPage(currentPage);
+      document.getElementById(`${currentPage}`).classList.remove('active');
+      currentPage <= numberOfPages ? document.getElementById(`${currentPage + 1}`).classList.toggle('active') :
+        document.getElementById(`${currentPage}`).classList.toggle('active');
+    }
+  
+    const handlePrevious = (event) => {
+      event.preventDefault();
+      currentPage > 1 ? setCurrentPage(currentPage - 1) : setCurrentPage(currentPage);
+      document.getElementById(`${currentPage}`).classList.remove('active');
+      currentPage > 1 ? document.getElementById(`${currentPage - 1}`).classList.toggle('active') :
+        document.getElementById(`${currentPage}`).classList.toggle('active');
+    }
    
    useEffect(() => {
       dispatch(getAllDogs())
@@ -130,6 +147,10 @@ const Home = () => {
          </div><div>
 
 
+         <Paginado dogsPerPage={dogsPerPage} dogs={allDogs.length} pagination={pagination} currentPage={currentPage}
+        handlePrevious={handlePrevious} handleNext={handleNext} />
+         <br />
+
             <div className={s.container}>
 
                {currentDogs.length ? currentDogs.map((e) => {
@@ -155,13 +176,6 @@ const Home = () => {
             </div>
 
             <div />
-
-
-            <Paginado
-               dogsPage={dogsPage} 
-               allDogs={allDogs.length} 
-               paginado={paginado}
-            />
          </div></>
 
    )
