@@ -11,13 +11,13 @@ import s from "./dogDetail.module.css"
 const DogDetail = () => {
     const dispatch = useDispatch()
     const dog = useSelector((state) => state.dogDetail)
-    const { id } = useParams() //id del perro
+    const { id } = useParams() 
     // const history = useHistory()
 
-    useEffect(() => { //cuando se monta el componente
-        dispatch(getDogDetail(id)) //llama a la acción getDogDetail
-        dispatch(resetState()) //llama a la acción resetState
-    }, [dispatch, id]) //cuando cambia el dispatch o el id
+    useEffect(() => { 
+        dispatch(getDogDetail(id)) 
+        dispatch(resetState()) 
+    }, [dispatch, id]) 
 
     
     const history = useHistory()

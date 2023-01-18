@@ -9,11 +9,11 @@ import s from "./DogCreate.module.css";
 
 
 const DogCreate = () => { 
-    const dispatch = useDispatch() // uso dispatch para poder usar las acciones
-    const allDogs = useSelector((state) => state.allDogs)  // traigo todos los perros
-    const temperaments = useSelector((state) => state.allTemperaments)  // traigo todos los temperamentos
-    const [errors, setErrors] = useState({}) // creo un estado para los errores
-    const [input, setInput] = useState({ // creo un estado para los inputs
+    const dispatch = useDispatch() 
+    const allDogs = useSelector((state) => state.allDogs)  
+    const temperaments = useSelector((state) => state.allTemperaments)  
+    const [errors, setErrors] = useState({}) 
+    const [input, setInput] = useState({ 
         name: "",
         height_min: "",
         height_max: "",
@@ -89,34 +89,34 @@ const DogCreate = () => {
     }
 
 
-    const handleChange = (e) => { // funcion para manejar los cambios en los inputs
-        setInput({ // seteo el estado de los inputs
-            ...input, // con los valores que ya tenia
-            [e.target.name]: e.target.value // y los que se estan cambiando
+    const handleChange = (e) => { 
+        setInput({ 
+            ...input, 
+            [e.target.name]: e.target.value 
         })
-        setErrors(validate({ // seteo el estado de los errores
-            ...input, // con los valores que ya tenia
-            [e.target.name]: [e.target.value] // y los que se estan cambiando
+        setErrors(validate({ 
+            ...input, 
+            [e.target.name]: [e.target.value] 
 
         }))
         console.log(input)
     }
 
-    useEffect(() => { // uso useEffect para que se ejecute una sola vez
-        dispatch(getAllTemperaments()) // y traiga todos los temperamentos
-    }, [dispatch]) // y que se ejecute cada vez que cambie el dispatch
+    useEffect(() => {
+        dispatch(getAllTemperaments()) 
+    }, [dispatch]) 
 
 
-    const handleSubmit = (e) => { // funcion para manejar el submit
-        e.preventDefault(); // evito que se recargue la pagina
-        if (!input.name || !input.height_min || !input.height_max || !input.weight_min || !input.weight_max || !input.life_span || input.temperaments.length === 0) { // si alguno de los inputs esta vacio
-            alert("Complete the required fields (*)") // muestro un alert
-        } else if (errors.name || errors.height_min || errors.height_max || errors.weight_min || errors.weight_max || errors.life_span) { // si hay algun error
-            alert("Please, review the required data") // muestro un alert
-        } else { // si no
-            setErrors(validate(input)) // seteo el estado de los errores
-            dispatch(postDog(input)) // y despacho la accion para crear el perro
-            setInput({ // seteo el estado de los inputs
+    const handleSubmit = (e) => { 
+        e.preventDefault(); 
+        if (!input.name || !input.height_min || !input.height_max || !input.weight_min || !input.weight_max || !input.life_span || input.temperaments.length === 0) { 
+            alert("Complete the required fields (*)") 
+        } else if (errors.name || errors.height_min || errors.height_max || errors.weight_min || errors.weight_max || errors.life_span) { 
+            alert("Please, review the required data") 
+        } else {
+            setErrors(validate(input)) 
+            dispatch(postDog(input)) 
+            setInput({ 
                 name: "",
                 height_min: "",
                 height_max: "",
@@ -131,11 +131,11 @@ const DogCreate = () => {
         }
     }
 
-    const handleSelectTemp = (e) => { // funcion para manejar el select de temperamentos
-        if ( !input.temperaments.includes(e.target.value))  // si el valor del select no esta incluido en el array de temperamentos
-            setInput({ // seteo el estado de los inputs
-                ...input, // con los valores que ya tenia
-                temperaments: [...input.temperaments, e.target.value] // y el valor del select 
+    const handleSelectTemp = (e) => { 
+        if ( !input.temperaments.includes(e.target.value))  
+            setInput({ 
+                ...input, 
+                temperaments: [...input.temperaments, e.target.value] 
             });
             
 

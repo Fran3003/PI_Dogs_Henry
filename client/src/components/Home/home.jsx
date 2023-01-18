@@ -15,20 +15,20 @@ const Home = () => {
 
    const allDogs = useSelector((state) => state.dogs)
    const allTemperaments = useSelector((state) => state.allTemperaments)
-   // console.log(allDogs)
+   
    const [, setOrder] = useState('')
 
    //paginado
-   const [currentPage, setCurrentPage] = useState(1) //estado de la página actual
-   const [dogsPage] = useState(8) //cantidad de perros por página
+   const [currentPage, setCurrentPage] = useState(1) 
+   const [dogsPage] = useState(8) 
 
-   const lastDog = currentPage * dogsPage  //8
-   const firstDog = lastDog - dogsPage // 8 - 8 = 0 esto es para que no me muestre los 8 primeros perros
-   const currentDogs = allDogs.slice(firstDog, lastDog) //dogs en la página actual
+   const lastDog = currentPage * dogsPage
+   const firstDog = lastDog - dogsPage 
+   const currentDogs = allDogs.slice(firstDog, lastDog) 
 
 
-   const paginado = (pageNum) => { //recibe el número de página
-      setCurrentPage(pageNum) //setea el estado currentPage con el número de página
+   const paginado = (pageNum) => { 
+      setCurrentPage(pageNum) 
    }
    
    useEffect(() => {
@@ -68,12 +68,6 @@ const Home = () => {
       setCurrentPage(1)
    }
 
-   // const handleFilterWeight = (e) => {
-   //    e.preventDefault()
-   //    dispatch(filterByWeight(e.target.value))
-   //    setCurrentPage(1)
-
-   // }
 
    return (
       <>
@@ -124,14 +118,6 @@ const Home = () => {
                   </select>
                </div>
 
-               {/* <div className={s.filterWei}>
-                  <label> WEIGHT </label>
-                  <select onChange={e => handleFilterWeight(e)}>
-                     <option hidden>Filter by weight</option>
-                     <option value="all">All</option>
-                     <option value="10kg">-10kg</option>
-                  </select>
-                  </div> */}
 
             </div>
             <div className={s.btn}><Link to='/dogs' style={{ textDecoration: "none" }}><button>Create dog</button></Link>
@@ -172,9 +158,9 @@ const Home = () => {
 
 
             <Paginado
-               dogsPage={dogsPage} //cantidad de perros por página
-               allDogs={allDogs.length} //cantidad total de perros
-               paginado={paginado} //función para cambiar de página
+               dogsPage={dogsPage} 
+               allDogs={allDogs.length} 
+               paginado={paginado}
             />
          </div></>
 

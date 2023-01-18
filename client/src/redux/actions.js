@@ -8,21 +8,21 @@ export const FILTER_BY_BREEDS = "FILTER_BY_BREEDS"
 export const GET_DOGS_BY_NAME = "GET_DOGS_BY_NAME"
 export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS"
 export const POST_DOG = "POST_DOG"
-export const FILTER_BY_TEMPERAMENTS = "FILTER_BY_TEMPERAMENTS" // se crea una constante para filtrar los perros por temperamento
+export const FILTER_BY_TEMPERAMENTS = "FILTER_BY_TEMPERAMENTS" 
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL"
-export const RESET_STATE = "RESET_STATE" // se crea una constante para resetear el estado
-export const DELETE_CREATED_DOG = "DELETE_CREATED_DOG" // se crea una constante para eliminar un perro creado por el usuario
-export const FILTER_BY_WEIGHT = "FILTER_BY_WEIGHT" // se crea una constante para filtrar los perros por peso
+export const RESET_STATE = "RESET_STATE" 
+export const DELETE_CREATED_DOG = "DELETE_CREATED_DOG" 
+export const FILTER_BY_WEIGHT = "FILTER_BY_WEIGHT" 
 
 
 
-export const getAllDogs = () => { // esta función es la que se va a llamar en el componente
-    return function (dispatch) { // esta función es la que se va a llamar en el componente
-        axios.get("http://localhost:3001/dogs") // se hace un get a la ruta /dogs
-            .then(response => { // si la respuesta es exitosa
-                dispatch({ // se hace un dispatch con el type GET_ALL_DOGS y el payload con los perros que vienen en la respuesta
-                    type: GET_ALL_DOGS, // type GET_ALL_DOGS
-                    payload: response.data // payload con los perros que vienen en la respuesta
+export const getAllDogs = () => { 
+    return function (dispatch) { 
+        axios.get("http://localhost:3001/dogs") 
+            .then(response => { 
+                dispatch({ 
+                    type: GET_ALL_DOGS,
+                    payload: response.data 
                 })
                 console.log(response.data)
             })
@@ -51,7 +51,7 @@ export const getAllDogs = () => { // esta función es la que se va a llamar en e
 //     }
 // }
 
-// forma de getDogsbyName con con fetch
+
 export const getDogsbyName = (name) => {
     return function (dispatch) {
         fetch(`http://localhost:3001/dogs?name=${name}`)
@@ -64,7 +64,6 @@ export const getDogsbyName = (name) => {
             })
             .catch(function (error) {
                 if (error.response) {
-                    // Request made and server responded
                     alert(error.response.data);
                     console.log(error.response.status);
                 }
@@ -99,10 +98,9 @@ export const getDogDetail = (id) => {
                     payload: response.data
                 })
             })
-            // console.log(id)
+            
             .catch(function (error) {
                 if (error.response) {
-                    // Request made and server responded
                     alert(error.response.data);
                     console.log(error.response.status);
 

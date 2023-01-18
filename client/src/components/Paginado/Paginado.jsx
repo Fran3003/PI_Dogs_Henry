@@ -4,12 +4,12 @@ import s from './Paginado.module.css'
 
 
 
-const Paginado = ({ allDogs, dogsPage, paginado }) => { //recibe todos los perros y la cantidad de perros por página
+const Paginado = ({ allDogs, dogsPage, paginado }) => { 
 
-    const pageNum = [] //array de páginas
+    const pageNum = [] 
     
-    for (let i = 1; i <= Math.ceil(allDogs / dogsPage); i++) {  //recorre el array de perros y divide por la cantidad de perros por página
-        pageNum.push(i) //push agrega un elemento al final del array
+    for (let i = 1; i <= Math.ceil(allDogs / dogsPage); i++) {  
+        pageNum.push(i) 
 
     }
    
