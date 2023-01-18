@@ -26,22 +26,6 @@ async function getDogApi() { // funcion asincrona para traer los perros de la AP
    
 }
 
-// async function getDogDB() { // funcion asincrona para traer los perros de la base de datos
-//   return await Dog.findAll({ // traigo todos los perros de la base de datos
-//     include: { 
-//       model: Temperament, 
-//       attributes: ['name'], 
-//       through: { 
-//         attributes: [], 
-//       },
-//     } // incluyo el modelo de temperamento y los atributos que quiero que me traiga
-//       // el through es para que no me traiga los atributos de la tabla intermedia
-//       // el include me permite traer los datos de la tabla intermedia
-//       // el include me permite traer los datos de la tabla intermedia
-//   })
-// }
-
-// forma new promise de getDogDB con include
 function getDogDB() { // funcion para traer los perros de la base de datos
   return new Promise((resolve, reject) => { // creo una promesa
     Dog.findAll({ // traigo todos los perros de la base de datos
